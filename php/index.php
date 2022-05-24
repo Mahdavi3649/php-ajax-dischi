@@ -25,7 +25,7 @@ include __DIR__ . '/db.php';
     <main>
         <div class="container">
             <div class="row p-5 row-cols-5 row-cols-sm-3">
-                <?php foreach ($dischi as $disco) { ?>
+                <?php foreach ($dischi['response'] as $disco) { ?>
                     
                     <div class="col-2-5">
                         <img class="img-disco"src="<?php echo $disco["poster"];?>" />
