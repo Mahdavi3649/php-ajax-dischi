@@ -1,13 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <header>
+      <div class="d-flex">
+        <img src="@/assets/img/logo.png" alt="" />
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-2-5"
+            :album="disco"
+            v-for="(disco, index) in dischi"
+            :key="index"
+          >
+            <img :src="disco.poster" />
+            <h3 class="fs-6 text-center text-white fw-bold mt-3 text-uppercase">
+              {{ disco.title }}
+            </h3>
+            <div class="caption mt-3">{{ disco.author }}</div>
+            <div class="caption">{{ disco.year }}</div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+
 export default {
   name: "App",
+
   data() {
     return {
       dischi: null,
@@ -16,9 +42,12 @@ export default {
 
   mounted() {
     axios
-      .get("http://localhost/php/introphp/php-ajax-dischi/php-ajax-dischi/php/")
+      .get(
+        "http://localhost/php/introphp/php-ajax-dischi/php-ajax-dischi/php/db.php"
+      )
       .then((response) => {
         console.log(response.data);
+        this.dischi = response.data.response;
       })
       .catch((error) => {
         console.log(error);
@@ -32,7 +61,37 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
+}
+
+header {
+  background-color: #2e3a46;
+
+  img {
+    width: 40px;
+    margin: 0.7rem 1rem;
+  }
+}
+
+main {
+  background-color: #1e2d3b;
+  height: 800px;
+
+  img {
+    max-width: 100%;
+  }
+  .col-2-5 {
+    flex: 0 0 auto;
+    width: 18%;
+    margin: 1%;
+    padding: 25px;
+    background-color: #2e3a46;
+  }
+
+  .caption {
+    text-align: center;
+    font-size: 14px;
+    color: #807f7f;
+    font-weight: 500;
+  }
 }
 </style>
