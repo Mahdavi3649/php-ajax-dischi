@@ -16,7 +16,7 @@
             :key="index"
           >
             <img :src="disco.poster" />
-            <h3 class="fs-6 text-center text-white fw-bold mt-3 text-uppercase">
+            <h3 class="title">
               {{ disco.title }}
             </h3>
             <div class="caption mt-3">{{ disco.author }}</div>
@@ -76,23 +76,40 @@ header {
 main {
   background-color: #1e2d3b;
   height: 800px;
+  padding-top: 3rem;
 
+  .container {
+    width: 1200px;
+    margin: auto;
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
   img {
     max-width: 100%;
   }
   .col-2-5 {
     flex: 0 0 auto;
-    width: 18%;
+    width: 13%;
     margin: 1%;
     padding: 25px;
     background-color: #2e3a46;
-  }
 
-  .caption {
-    text-align: center;
-    font-size: 14px;
-    color: #807f7f;
-    font-weight: 500;
+    .caption {
+      text-align: center;
+      font-size: 14px;
+      color: #807f7f;
+      font-weight: 500;
+    }
+    .title {
+      text-align: center;
+      color: white;
+      font-weight: 500;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
   }
 }
 </style>
